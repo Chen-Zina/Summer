@@ -1,0 +1,49 @@
+#include<stdio.h>
+int f(int x)
+{
+    if(x==0) return 1;
+    else 
+    {
+       for(int q=x-1;q>0;q--)
+       x*=q;
+       return x;
+    }
+}
+int main()
+{
+    int n,m;//从1到n的全排列,m表示第几个数
+    scanf("%d %d",&n,&m);
+    int a[n],cnt=n;
+    m=m-1;
+    for(int i=0;i<n;i++)
+    {  
+       int t,min=1;//t表示小于a[i]的个数,min表示a[i]后面最小的数
+       cnt--;
+       t=m/f(cnt);
+       int j=0,q;
+       for(q=0;q<i;q++)
+       {
+          if(a[q]==min) 
+          {
+          min++;
+          q=-1;
+          }
+       }//算出每次i循环后a[i]后面最小的数
+       a[i]=min+t;
+       for(j=0;j<i;j++)
+       {  
+          if(a[i]==a[j])
+          {
+            a[i]++;
+            j=-1;
+          }
+       }//避免a[i]与a[i]前面的数重复
+       m=m%f(cnt);//要用上一个的余数去除以下一位数所处位子的阶乘
+    }
+    for(int i=0;i<n;i++)
+    printf("%d",a[i]);
+    return 0;
+}
+//问题:1.开始直接让a[i]=t+1; 忽略了每次a[i]后面最小值不一定为1.
+//     2.min解决之后，又忽略了每个数的不能重复.
+//     3.开始让q,j都等于0，每次++后都不能判断是否与a[0]相等,因此改为-1.
