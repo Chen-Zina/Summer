@@ -1,0 +1,31 @@
+/*给定一个大于1的正整数m，如果两个整数a和b满足(a-b)/m得到一个整数，那么就称整数a与b对模m同余，
+记作a≡b(mod m)。*/
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int a,b,t,m;
+    scanf("%d %d",&a,&b);
+    if(a<b)
+    {
+      t=a;
+      a=b;
+      b=t;
+    }
+    int cnt=0,s[10000];
+    for(m=2;m<=a;m++)
+    {
+       if((a-b)%m==0) 
+       {
+         s[cnt]=m;
+         cnt++;
+       }
+    }
+    //找a与b能同除以m后得到相同余数的m
+    for(int i=0;i<=cnt;i++)
+    {
+       if(a%s[i]==b%s[i])
+       printf("%d ",s[i]);
+    }
+    return 0;
+}
