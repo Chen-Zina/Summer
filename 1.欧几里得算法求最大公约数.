@@ -1,0 +1,20 @@
+#include<stdio.h>
+int main()
+{
+    int a,b,t;
+    scanf("%d %d",&a,&b);
+    if(a>b)
+    { 
+        t=a;
+        a=b;
+        b=t;
+    }
+    while(b%a!=0)
+    {
+        t=b%a;
+        b=a%t;/        a=t%b;
+    }
+   printf("%d",a);
+   return 0;
+}
+//问题:开始在while把条件设为了t!=0;若t=0;b不能算出
