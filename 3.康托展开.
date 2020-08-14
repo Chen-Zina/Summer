@@ -1,0 +1,42 @@
+#include<stdio.h>
+int f(int x)
+{
+    if(x==0) return 1;
+    else 
+    {
+       for(int q=x-1;q>0;q--)
+       x*=q;
+       return x;
+    }
+}
+int main()
+{
+    char n,a[n];
+    int i=0;
+    scanf("%c",&a[0]);
+    while(a[i]!='\n')
+    {
+        i++;
+        scanf("%c",&a[i]);
+    }
+    //输入一个整数如4321;此时i=4;
+    int sum=0,p;
+    int cnt=i;
+    for(int j=0;j<i;j++)
+    {  
+       p=0;
+    //每次都要计算第i位之后比第i位小的位的数量，p需重置
+       for(int m=j;m<i;m++)
+       {
+          if(a[j]>a[m])
+          p++;
+       }
+       //4的sum是3*3!=18;    3的是2*2!=4
+       //2的   是1*1!=1;       1的是0;
+       //所以小于4321的数有23个，它为第24大的数
+       cnt--;
+       sum+=p*f(cnt);
+    }
+    printf("%d",sum+1);
+}
+//问题:每一个sum算阶乘时多乘了x; p未重置; 最后sum忘加一
