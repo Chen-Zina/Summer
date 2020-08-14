@@ -1,0 +1,21 @@
+//在数组中的两个数字如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对
+//输入一个数组，求出这个数组中的逆序对的总数
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);//数组元素个数
+    int s[n],sum=0;
+    for(int i=0;i<n;i++)
+      scanf("%d",&s[i]);
+    for(int i=0;i<n;i++)
+    {
+       for(int m=i;m<n;m++)
+       {
+          if(s[i]>s[m])
+          sum++;
+       }
+    }
+    printf("%d",sum);
+    return 0;
+}
