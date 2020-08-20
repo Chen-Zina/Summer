@@ -1,0 +1,28 @@
+#include<stdio.h>
+int main()
+{   
+	int n,t,max=0;
+  //t为出现次数最多的数，max为其出现次数 
+	scanf("%d",&n);
+	
+	int a[n],i;
+	for(i=0;i<n;i++)
+	scanf("%d",&a[i]);
+	
+	for(i=0;i<n;i++)
+	{  
+	    int cnt=0,j;
+	    for(j=0;j<n;j++)
+	    {
+	        if(a[i]==a[j])
+        	cnt++;
+     	}
+	    if(cnt>max)
+     	{
+            max=cnt;
+		    t=a[i];
+		}
+	}
+	printf("%d %d\n",t,max);
+	return 0;
+}
