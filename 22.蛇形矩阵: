@@ -1,0 +1,25 @@
+//输入两个整数n和m，输出一个n行m列的矩阵，将数字 1 到 n*m 按照回字蛇形填充至矩阵中。
+#include<stdio.h>
+int main()
+{
+    int a[100][100]={0},n,m;
+    scanf("%d %d",&n,&m);
+    int s[4][2] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    int x=0,y=-1,d=0,len=1;
+    for(int i=0;i<n*m;i++)
+    {
+        x+=s[d][0];
+        y+=s[d][1];
+        a[x][y]=len++;
+        if( (d==0 && (y==m-1 || a[x][y+1])) || (d==1 && (x==n-1 || a[x+1][y]))
+             || (d==2 && (y==0 || a[x][y-1])) || (d==3 && a[x-1][y]) )
+            d = (d + 1) % 4;
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+            printf("%d ", a[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
