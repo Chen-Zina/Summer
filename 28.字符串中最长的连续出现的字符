@@ -1,0 +1,39 @@
+/*求一个字符串中最长的连续出现的字符，
+输出该字符及其出现次数，字符串中无空白字符（空格、回车和tab），
+如果这样的字符不止一个，则输出第一个。*/
+#include <stdio.h>
+void m(char a[])
+{
+        int max=-1;//max最大长度
+        char maxchar=a[0];
+        int len=strlen(a);
+        int i,j,cnt=0;
+        for(int i=0;i<len;i++)
+        {
+            j=i;
+            cnt=0;
+            while(a[j]==a[i] && j<len)
+            {
+                j++;
+                cnt++;
+            }
+            if(cnt>max)
+            {
+               max=cnt;
+               maxchar=a[i];
+            }
+            i=j-1;
+        }
+        printf("%c %d\n",maxchar,max);
+}
+int main()
+{
+    int k;
+    scanf("%d\n",&k);
+    char a[200];
+    while(k--)
+    {
+       gets(a);
+       m(a);
+    }
+}
