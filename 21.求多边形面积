@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<math.h>
+typedef struct {
+  double x;
+  double y;
+}N;
+int s(double x1,double y1,double x2,double y2,double x3,double y3)
+{
+    double s;
+    s=(x1*y2-x2*y1 + x2*y3-x3*y2 + x3*y1-x1*y3)/2.0;
+    return s;
+}
+int main()
+{
+    int n,i;
+    scanf("%d",&n);//n边形
+    N a[n];
+    for(i=0;i<n;i++)
+    {
+       scanf("%lf %lf",&a[i].x,&a[i].y);
+       //按逆时针输入坐标
+    }
+    double sum=0;
+    i=1;
+    while(i+1<n)//分成n-2个三角形
+    {
+       sum+=s(a[0].x,a[0].y,a[i].x,a[i].y,a[i+1].x,a[i+1].y);
+       i++;
+    }
+    printf("%.2f",sum);
+    return 0;
+}
