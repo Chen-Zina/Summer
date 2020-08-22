@@ -1,0 +1,30 @@
+//列如输入abbccc,输出结果为a1b2c3.
+#include<stdio.h>
+
+int main()
+{
+    char s[1000];
+    gets(s);
+    int len=strlen(s);
+    char str[len];
+    str[0]=s[0];
+    int num[len];
+    int count=1,i;
+    int j=0,m=0;
+    for(i=1;i<len;i++)
+    {
+        if(s[i]==s[i-1])  count++;
+        else
+        {
+            num[j]=count;
+            j++;
+            m++;
+            str[m]=s[i];
+            count=1;
+        }
+    }
+    num[j]=count;
+    for(int k=0;k<=m;k++)
+    printf("%c%d",str[k],num[k]);
+    return 0;
+}
