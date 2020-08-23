@@ -1,0 +1,33 @@
+//n个人围成一圈,顺序排号,从1到x报数,报到x的人退出
+//求最后留下来的是原来的第几号.
+#include <stdio.h>
+ 
+int main()
+{
+    int n,x;
+    scanf("%d %d",&n,&x);
+    int a[n],i;
+    for(i=0;i<n;i++ )
+    a[i]=i+1;
+    int m=0,k=0;
+    while(m<n-1) 
+    {
+       for(i=0;i<n;i++)
+       {
+          if(a[i]!=0)
+          {
+             k++; 
+             if(k%x==0)
+             {
+                a[i] = 0;
+                m++;
+             }
+          }
+       }
+    }
+    for(i=0;i<n;i++)
+       if(a[i] != 0)
+       printf("%d", a[i]);
+
+    return 0;
+}
