@@ -1,0 +1,26 @@
+// 1 1 2 3 5 8 13 21……
+int f(int n)
+{
+    int n1=1;
+    int n2=1;
+    int p=0;
+    if(n<3)  return 1;
+    else
+    {
+        for(int i=0;i<=n-3;i++)
+        {
+            p=n1+n2;
+            n1=n2;
+            n2=p;
+        }
+        return p;
+    }
+}
+int main()
+{
+	   int n,ret;
+   	scanf("%d", &n);
+   	ret=f(n);
+   	printf("%d", ret);
+   	return 0;
+}
