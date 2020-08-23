@@ -1,0 +1,23 @@
+//是指一个数的平方的尾数等于该数自身的自然数.
+//给定一个n，求从0到n范围内的自守数.
+#include<stdio.h>
+int main()
+{
+    int n,i;
+    scanf("%d", &n);    
+    int sum,m,cnt;
+    for(i=0;i<=n;i++)      
+    {
+       cnt=10;
+       m=i;
+       while(m/10!=0)
+       {
+          cnt*=10;
+          m/=10;
+       }
+       sum=i*i;
+       if((sum-i)%cnt==0) 
+       printf("%d ",i);
+    }
+    return 0;
+}
