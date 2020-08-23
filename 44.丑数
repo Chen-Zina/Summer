@@ -1,0 +1,30 @@
+//丑数是其质因子只可能是2，3或5的数。
+//前10个丑数分别为1, 2, 3, 4, 5, 6, 8, 9, 10, 12。
+//输入一个正整数n，求第n个丑数。
+#include <stdio.h>
+
+int f(int i)
+{
+    int m;
+    if(i==1 || i%2==0 || i%3==0 || i%5==0)
+    m=1;//代表i是丑数
+    else m=0;
+    return m;
+}
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int a[1000]={0},i,j=1;
+    for(i=1;j<=n;i++)
+    {
+        if(f(i)==1)
+        {
+            a[j]=i;
+            j++;
+        }
+        else continue;
+    }
+    printf("%d\n",a[n]);
+    return 0;
+}
