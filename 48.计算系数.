@@ -1,0 +1,26 @@
+/*给定一个多项式(ax+by)^k,求出多项式展开后x^ny^m项的系数.
+共一行，包含 5 个整数,分别为a,b,k,n,m.
+这个系数可能很大，输出对10007 取模后的结果.*/
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+
+    int a,b,k,n,m;//n+m=k;
+    scanf("%d %d %d %d %d",&a,&b,&k,&n,&m);
+    int C,k1=k,n1=n;
+    //系数C|n
+    //    |k
+    for(int i=1;i<n;i++)
+    {
+       k1--;
+       k=k*k1;
+       n1=n1*i;
+    }
+    a=pow(a,n);
+    b=pow(b,m);
+    C=k*a*b/n1;
+    printf("%d",C%10007);
+    return 0;
+}
