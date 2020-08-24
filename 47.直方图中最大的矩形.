@@ -1,0 +1,26 @@
+/*直方图是由在公共基线处对齐的一系列矩形组成的多边形。
+矩形的宽度均为1，请你计算在公共基线处对齐的直方图中最大矩形的面积。*/
+#include<stdio.h>
+
+int main(void) {
+    int n;
+    scanf("%d",&n);
+    int a[n],i;
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    
+    int j,max=0;
+    for(i=0;i<n;i++)
+    {
+       int l=a[i];//边长
+       int t=0;
+       for(j=i;j<n;j++)
+       { 
+          if(l>a[j])  l=a[j];
+          t=(j-i+1)*l;
+          if(t>max)  max=t;
+        }
+    }
+    printf("%d",max);
+    return 0;
+}
