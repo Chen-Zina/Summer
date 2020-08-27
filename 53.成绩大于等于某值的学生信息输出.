@@ -1,0 +1,31 @@
+//输入若干个学生信息（包括学号、姓名和成绩），输入学号为0时输入结束，建立一个单向链表，再输入一个成绩值，将成绩大于等于该值的学生信息输出
+#include<stdio.h>
+typedef struct
+{
+   char name[8];
+   int score;
+}S;
+int main()
+{
+    int num[100];
+    int a,t,i=0;
+    S s[100];
+    scanf("%d",&num[0]);
+    
+    while(num[i]!=0)
+    {
+       
+       scanf("%s",&s[i].name);
+       scanf("%d",&s[i].score);
+       t=i+1;
+       i++;
+       scanf("%d",&num[i]);
+    }
+    scanf("%d",&a);
+    for(int j=0;j<t;j++)
+    {
+       if(s[j].score>=a)
+       printf("%d %s %d\n",num[j],s[j].name,s[j].score);
+    }
+    return 0;
+}
