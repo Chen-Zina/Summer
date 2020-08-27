@@ -1,0 +1,23 @@
+//用泰勒展开式求sinx近似值的多项式为：
+//输入x求sinx的近似值，要求误差不大于0.00001。
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    double x,sum=0,flag=-1;
+    double y,f;
+    scanf("%lf",&x);
+    int i=1;
+    do
+    {
+       y=1;
+       for(int j=1;j<=i;j++)
+       y*=j;
+       flag=-flag;
+       f=flag*pow(x,i)/y;
+       sum+=f;
+       i+=2;
+     }while(fabs(f)>=0.00001);
+     printf("%.3f",sum);
+     return 0;
+}
