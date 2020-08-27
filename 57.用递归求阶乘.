@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<stdlib.h>
+int f(int m)
+{
+    if(m==1) return m;
+    else     return m*f(m-1);
+}
+int main()
+{
+    int m;  
+    int r; 
+    scanf("%d",&m);
+    r=f(m);  //函数调用
+    printf("%d",r);
+    return 0;
+}
