@@ -1,0 +1,36 @@
+//输出从m到n内所有的完数 
+#include<stdio.h>
+int main()
+{   int m,n,cnt=0,h,t=0;
+    int a[10000];
+	scanf("%d %d",&m,&n);
+	int i,j,k,q;
+	if(m>1 && m<=n && n<=10000)
+	{
+		for(i=m;i<=n;i++)
+		{ 
+			h=i;
+			for(j=1;j<i;j++)
+			{ 
+				if(i%j==0)
+				h=h-j;
+				t=0;
+			}
+			if(h==0)
+			{
+				printf("%d = ",i);
+				for(k=1;k<i;k++)
+				if(i%k==0)
+				{a[t]=k;t++;}
+			
+				for(q=0;q<t-1;q++)
+				printf("%d + ",a[q]);
+				printf("%d",a[t-1]);
+				printf("\n");
+			}
+			else cnt++;
+		}
+	if(cnt==n-m+1)	printf("None");
+	}
+	return 0;
+}
