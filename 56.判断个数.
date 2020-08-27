@@ -1,0 +1,22 @@
+//判断字符串中 数字字符的个数、大写字母的个数、小写字母
+//的个数及其它字符的个数.
+#include<stdio.h>
+
+void main()
+{   
+    int i,x,m=0,n=0,k=0,j=0;
+    char a[20];
+    gets(a);
+    x=strlen(a);
+    for(i=0;i<x;i++)
+    {
+        if(a[i]>='0'&&a[i]<='9')
+        m++;
+        else if(a[i]>='A'&&a[i]<='Z')
+        n++;
+        else if(a[i]>='a'&&a[i]<='z')
+        k++;
+        else j++;
+    }
+    printf("%d,%d,%d,%d\n",m,n,k,j);
+}
