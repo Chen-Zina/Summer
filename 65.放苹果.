@@ -1,0 +1,20 @@
+/*把M个同样的苹果放在N个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？
+5，1，1和1，5，5是相同的，1<=M，N<=10。输入M和N，用一行输出相应的K。*/
+#include<stdio.h>
+
+int f(int m, int n)
+{   if (n > m) //盘子数大于苹果数
+        return f(m, m);
+    if (m == 0) //苹果数为0
+        return 1;
+    if (n <= 0) //盘子数为0
+        return 0;
+    return f(m,n-1)+f(m-n,n);
+}
+int main()
+{
+    int t, m, n;
+    scanf("%d %d",&m,&n);
+    printf("%d",f(m,n));
+    return 0;
+}
