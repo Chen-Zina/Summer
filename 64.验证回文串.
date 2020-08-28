@@ -1,0 +1,38 @@
+//给定一个字符串,验证其是否为回文串,只考虑字母和数学字符,可以忽略字母的大小写.
+#include<stdio.h>
+void f(char* s) {
+    int i,j=0,flag=0;
+    int m=strlen(s);
+    char* ch = (char*)malloc(strlen(s) + 1);
+    for(i=0;i<m;i++) 
+    {
+        if(s[i]>='A' && s[i]<='Z') 
+        s[i]=s[i]+32;
+        
+        if ((s[i]>='a' && s[i]<='z') || (s[i]>='0' && s[i]<='9')) 
+        {
+            ch[j]=s[i];
+            j++;
+        }
+    }
+    int l=0,r=j;
+    for(i=0;i<j/2;i++) 
+    {
+        if(ch[l]!=ch[r-1]) 
+        flag=1;
+        else 
+        {
+            l++;
+            r--;
+        }
+    }
+   if(flag==0)  printf("ture");
+   else  printf("false");
+}
+int main()
+{
+    int *s;
+    gets(&s);
+    f(&s);
+    return 0;
+}
