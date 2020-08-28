@@ -1,0 +1,25 @@
+//一张单据上有一个5位数的编码，其百位数不知,但知道这个5位数是57和67的倍数.
+//设计一个算法，输出满足此条件的五位数，先输出其个数,再按升序输出.
+
+#include<stdio.h>
+
+int main()
+{
+    int d1,d2,d3,d4,d5;
+    int cnt=0,a[10],i,sum;
+    scanf("%d %d %d %d",&d1,&d2,&d4,&d5);//依次表示是万位数，千位数，十位数和个位数.
+    for(i=0;i<10;i++)   
+    {
+        sum=0;
+        sum=d1*10000+d2*1000+i*100+d4*10+d5;
+        if (sum%57==0 && sum%67==0)   
+        {
+            a[cnt]=sum;
+            cnt++;
+        }
+    }
+    printf("%d\n", cnt);
+    for(i=0;i<cnt;i++)       
+    printf("%d\n",a[i]);
+    return 0;
+}
