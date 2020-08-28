@@ -1,0 +1,31 @@
+#include<stdio.h>
+int n, m;
+int a[100],cnt;
+void f(int b,int count)
+{
+    if (count==m)
+    {
+        if (cnt!=m)   return;
+        for(int i=0;i<m;i++)
+        {
+            printf("%d", a[i]);
+            if (i < m - 1)
+                printf(" ");
+        }
+        printf("\n");
+        return;
+    }
+    for (int i=b;i<=n;i++)
+    {
+        a[cnt++] = i;
+        f(i+1, count+1);
+        --cnt;
+    }
+    return;
+}
+int main()
+{
+    scanf("%d %d", &n, &m);
+    f(1, 0);
+    return 0;
+}
